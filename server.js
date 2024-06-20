@@ -1,9 +1,8 @@
-const dotenv = require('dotenv');
-const mongoose = require('mongoose');
+import dotenv from 'dotenv';
+import mongoose from 'mongoose';
+import app from './app.js'; // Ensure the app module is exported as ESM
 
 dotenv.config({ path: './config.env' });
-const app = require('./app');
-
 // CONNECT TO DATABASE
 const DB = process.env.DATABASE.replace('<PASSWORD>', process.env.DATABASE_PASSWORD);
 

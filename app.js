@@ -1,11 +1,17 @@
-const express = require('express');
-const path = require('path');
-const morgan = require('morgan');
-const cookieParser = require('cookie-parser');
+import express from 'express';
+import path from 'path';
+import morgan from 'morgan';
+import cookieParser from 'cookie-parser';
 
+import roomRoute from './routes/api/roomRoute.js';
+
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
+    
 const app = express();
 
 // View engine setup
+const __dirname = dirname(fileURLToPath(import.meta.url));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
@@ -19,8 +25,11 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', (req, res) => {
-  res.send('Hello!');
-});
+// app.use('/', (req, res) => {
+//   res.send('Hello World!');
+// });
 
-module.exports = app;
+// ROUTES
+app.use('/api/v1/rooms', roomRoute);
+
+export default app;
