@@ -1,4 +1,5 @@
 import express from 'express';
+import dotenv from 'dotenv';
 import path from 'path';
 import morgan from 'morgan';
 import cookieParser from 'cookie-parser';
@@ -7,7 +8,8 @@ import roomRoute from './routes/api/roomRoute.js';
 
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
-    
+
+dotenv.config({ path: './config.env' });
 const app = express();
 
 // View engine setup
@@ -15,7 +17,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
-// Development logging
+//Development logging
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
 }
