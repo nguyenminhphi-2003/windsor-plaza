@@ -5,6 +5,7 @@ import morgan from 'morgan';
 import cookieParser from 'cookie-parser';
 
 import roomRoute from './routes/api/roomRoute.js';
+import ErrorHandler from './controllers/errorController.js';
 
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
@@ -34,4 +35,5 @@ app.use(express.static(path.join(__dirname, 'public')));
 // ROUTES
 app.use('/api/v1/rooms', roomRoute);
 
+app.use(ErrorHandler);
 export default app;
