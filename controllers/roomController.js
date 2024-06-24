@@ -13,6 +13,17 @@ const roomController = {
       },
     });
   }),
+  
+  getRoomById: catchAsync(async (req, res) => {
+    const room = await Room.findById(req.params.id);
+
+    res.status(200).json({
+      status: 'success',
+      data: {
+        room,
+      },
+    });
+  }),
 
   createRoom: catchAsync(async (req, res) => {
     const newRoom = await Room.create(req.body);
@@ -21,17 +32,6 @@ const roomController = {
       status: 'success',
       data: {
         room: newRoom,
-      },
-    });
-  }),
-
-  getRoomById: catchAsync(async (req, res) => {
-    const room = await Room.findById(req.params.id);
-
-    res.status(200).json({
-      status: 'success',
-      data: {
-        room,
       },
     });
   }),

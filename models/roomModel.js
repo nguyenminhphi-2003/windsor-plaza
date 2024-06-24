@@ -8,22 +8,10 @@ const roomSchema = new mongoose.Schema(
       unique: true,
       trim: true,
     },
-    description: {
+    status: {
       type: String,
-      trim: true,
-    },
-    imageCover: {
-      type: String,
-      required: [true, 'A room must have a cover image'],
-    },
-    images: [String],
-    price: {
-      type: Number,
-      required: [true, 'A room must have a price'],
-    },
-    capacity: {
-      type: Number,
-      required: [true, 'A room must have a capacity'],
+      enum: ['available', 'booked', 'occupied', 'unclean'],
+      default: 'available',
     },
   },
   {
