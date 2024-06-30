@@ -1,6 +1,6 @@
-import mongoose from 'mongoose';
+import { Schema, model } from 'mongoose';
 
-const roomSchema = new mongoose.Schema(
+const roomSchema = new Schema(
   {
     name: {
       type: String,
@@ -13,6 +13,11 @@ const roomSchema = new mongoose.Schema(
       enum: ['available', 'booked', 'occupied', 'unclean'],
       default: 'available',
     },
+    type: {
+      type: Schema.ObjectId,
+      ref: 'RoomType',
+      required: [true, 'A room must belong to a room type.'],
+    },
   },
   {
     toJSON: { virtuals: true },
@@ -20,5 +25,14 @@ const roomSchema = new mongoose.Schema(
   },
 );
 
-const Room = mongoose.model('Room', roomSchema);
+roomSchema.pre(/^find/, function (next) {
+  this.populate({
+    path: 'type',
+    select: 'name',
+  });
+
+  next();
+});
+
+const Room = model('Room', roomSchema);
 export default Room;

@@ -4,8 +4,10 @@ import path from 'path';
 import morgan from 'morgan';
 import cookieParser from 'cookie-parser';
 
+import errorController from './controllers/errorController.js';
+
 import roomRoute from './routes/api/roomRoute.js';
-import ErrorHandler from './controllers/errorController.js';
+import roomTypeRoute from './routes/api/roomTypeRoute.js';
 
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
@@ -34,6 +36,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // ROUTES
 app.use('/api/v1/rooms', roomRoute);
+app.use('/api/v1/room-types', roomTypeRoute);
 
-app.use(ErrorHandler);
+// Error handling middleware
+app.use(errorController);
+
 export default app;
