@@ -1,7 +1,10 @@
 import { Router } from 'express';
 import userController from '../../controllers/userController.js';
+import authController from '../../controllers/authController.js';
 
 const router = Router();
+
+router.post('/signup', authController.signup);
 
 router
   .route('/')
