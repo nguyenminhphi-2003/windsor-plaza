@@ -37,6 +37,14 @@ userSchema.pre('save', async function (next) {
   next();
 });
 
+// Method for password checking
+userSchema.methods.correctPassword = async function (
+  candidatePassword,
+  userPassword,
+) {
+  return await bcrypt.compare(candidatePassword, userPassword);
+};
+
 const User = model('User', userSchema);
 
 export default User;
