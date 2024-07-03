@@ -2,6 +2,7 @@ import jwt from 'jsonwebtoken';
 import User from '../models/userModel.js';
 import catchAsync from '../utils/catchAsync.js';
 import { MyError } from '../utils/MyError.js';
+import { promisify } from 'util';
 
 const signToken = (id) =>
   jwt.sign({ id }, process.env.JWT_SECRET, {
@@ -50,6 +51,34 @@ const authController = {
     }
 
     createSendToken(user, 200, res);
+  }),
+
+  protect: catchAsync(async (req, res, next) => {
+    // Getting the token
+    let token;
+    if (
+      req.headers.authorization &&
+      req.headers.authorization.startsWith('Bearer')
+    ) {
+      token = req.headers.authorization.split(' ')[1];
+    } else {
+      return next(new MyError('You are not logged in! Please log in.', 401));
+    }
+
+    // Verify token
+    const decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
+
+    // Check user
+    const user = await User.findById(decoded.id);
+    if (!user)
+      return next(
+        new MyError('The user belong to this token does no longer exist.', 401),
+      );
+
+    // Grant access
+    req.user = user;
+    res.locals.user = user;
+    next();
   }),
 };
 
