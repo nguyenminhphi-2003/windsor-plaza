@@ -7,11 +7,12 @@ const router = Router();
 router.post('/login', authController.login);
 router.post('/signup', authController.signup);
 
+// Protect all routes after this middleware
+router.use(authController.protect);
+
 router
   .route('/')
-  .get(userController.getAllUsers)
-  // 🚨🚨🚨 ONLY USE 'userController.createUser' FOR TESTING PURPOSES, DO NOT USE IN PRODUCTION
-  .post(userController.createUser);
+  .get(userController.getAllUsers);
 
 router
   .route('/:id')

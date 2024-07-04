@@ -14,17 +14,18 @@ const userController = {
     });
   }),
 
-  // 🚨🚨🚨 ONLY FOR TESTING PURPOSES, DO NOT USE IN PRODUCTION
-  createUser: catchAsync(async (req, res) => {
-    const newUser = await User.create(req.body);
+  //-----DEPRECATED
+  // createUser: catchAsync(async (req, res) => {
+  //   const newUser = await User.create(req.body);
 
-    res.status(201).json({
-      status: 'success',
-      data: {
-        user: newUser,
-      },
-    });
-  }),
+  //   res.status(201).json({
+  //     status: 'success',
+  //     data: {
+  //       user: newUser,
+  //     },
+  //   });
+  // }),
+  //---------------------------
 
   getUserById: catchAsync(async (req, res, next) => {
     const user = await User.findById(req.params.id);

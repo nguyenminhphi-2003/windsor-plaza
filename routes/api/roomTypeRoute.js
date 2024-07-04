@@ -1,17 +1,18 @@
 import { Router } from 'express';
 import roomTypeController from '../.././controllers/roomTypeController.js';
+import authController from '../.././controllers/authController.js';
 
 const router = Router();
 
 router
   .route('/')
   .get(roomTypeController.getAllRoomTypes)
-  .post(roomTypeController.createRoomType);
+  .post(authController.protect, roomTypeController.createRoomType);
 
 router
   .route('/:id')
   .get(roomTypeController.getRoomTypeById)
-  .patch(roomTypeController.updateRoomType)
-  .delete(roomTypeController.deleteRoomType);
+  .patch(authController.protect, roomTypeController.updateRoomType)
+  .delete(authController.protect, roomTypeController.deleteRoomType);
 
 export default router;
