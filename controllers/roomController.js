@@ -40,7 +40,7 @@ const roomController = {
   }),
 
   updateRoom: catchAsync(async (req, res) => {
-    const room = await room.findByIdAndUpdate(req.params.id, req.body, {
+    const room = await Room.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
       runValidators: true,
     });
