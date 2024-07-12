@@ -4,14 +4,16 @@ import authController from '../.././controllers/authController.js';
 
 const router = Router();
 
+router.use(authController.protect);
+
 router
   .route('/')
-  .get(authController.protect, billController.getAllBills)
-  .post(authController.protect, billController.createBill);
+  .get(billController.getAllBills)
+  .post(billController.createBill);
 
 router
   .route('/:id')
-  .get(authController.protect, billController.getBillById)
-  .patch(authController.protect, billController.updateBill)
-  .delete(authController.protect, billController.deleteBill);
+  .get(billController.getBillById)
+  .patch(billController.updateBill)
+  .delete(billController.deleteBill);
 export default router;
