@@ -2,37 +2,43 @@ import { Schema, model } from 'mongoose';
 import isEmail from 'validator/lib/isEmail.js';
 import bcrypt from 'bcryptjs';
 
-const userSchema = new Schema({
-  name: {
-    type: String,
-    required: [true, 'A user must have a name'],
+const userSchema = new Schema(
+  {
+    name: {
+      type: String,
+      required: [true, 'A user must have a name'],
+    },
+    email: {
+      type: String,
+      required: ['Please provide your email'],
+      unique: true,
+      lowercase: true,
+      validate: [isEmail, 'Please enter a valid email'],
+    },
+    password: {
+      type: String,
+      required: [true, 'A user must have a password'],
+      minlength: 8,
+      select: false,
+    },
+    // passwordChangedAt: Date,
+    // passwordResetToken: String,
+    // passwordResetExpires: Date,
+    phoneNumber: {
+      type: String,
+      required: [true, 'A user must have a phone number'],
+    },
+    active: {
+      type: Boolean,
+      default: true,
+      select: false,
+    },
   },
-  email: {
-    type: String,
-    required: ['Please provide your email'],
-    unique: true,
-    lowercase: true,
-    validate: [isEmail, 'Please enter a valid email'],
+  {
+    toJSON: { virtuals: true },
+    toObject: { virtuals: true },
   },
-  password: {
-    type: String,
-    required: [true, 'A user must have a password'],
-    minlength: 8,
-    select: false,
-  },
-  // passwordChangedAt: Date,
-  // passwordResetToken: String,
-  // passwordResetExpires: Date,
-  phoneNumber: {
-    type: String,
-    required: [true, 'A user must have a phone number'],
-  },
-  active: {
-    type: Boolean,
-    default: true,
-    select: false,
-  },
-});
+);
 
 userSchema.pre(/^find/, function (next) {
   this.find({ active: { $ne: false } });

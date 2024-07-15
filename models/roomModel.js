@@ -1,6 +1,6 @@
 import { Schema, model } from 'mongoose';
-import RoomType from './roomTypeModel.js';
 import { MyError } from '../utils/MyError.js';
+import RoomType from './roomTypeModel.js';
 
 const roomSchema = new Schema(
   {

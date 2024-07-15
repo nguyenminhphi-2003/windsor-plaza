@@ -31,7 +31,11 @@ const bookingSchema = new Schema({
     },
     default: 'booked',
   },
-});
+},
+{
+  toJSON: { virtuals: true },
+  toObject: { virtuals: true },
+},);
 
 bookingSchema.pre(/^find/, function (next) {
   this.populate({

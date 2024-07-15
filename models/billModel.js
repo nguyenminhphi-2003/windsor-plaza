@@ -1,28 +1,34 @@
 import { Schema, model } from 'mongoose';
 import Room from './roomModel.js';
 
-const billSchema = new Schema({
-  room: {
-    type: Schema.ObjectId,
-    ref: 'Room',
-    required: [true, 'A bill must belong to a room.'],
+const billSchema = new Schema(
+  {
+    room: {
+      type: Schema.ObjectId,
+      ref: 'Room',
+      required: [true, 'A bill must belong to a room.'],
+    },
+    user: {
+      type: Schema.ObjectId,
+      ref: 'User',
+    },
+    total: {
+      type: Number,
+    },
+    createdAt: {
+      type: Date,
+      default: Date.now(),
+    },
+    descripton: {
+      type: String,
+      trim: true,
+    },
   },
-  user: {
-    type: Schema.ObjectId,
-    ref: 'User',
+  {
+    toJSON: { virtuals: true },
+    toObject: { virtuals: true },
   },
-  total: {
-    type: Number,
-  },
-  createdAt: {
-    type: Date,
-    default: Date.now(),
-  },
-  descripton: {
-    type: String,
-    trim: true,
-  },
-});
+);
 
 billSchema.pre(/^find/, function (next) {
   this.populate({
@@ -51,7 +57,7 @@ billSchema.post('save', async function () {
   const room = await Room.findById(this.room);
   this.total = room.type.price;
   this.save();
-})
+});
 
 const Bill = model('Bill', billSchema);
 export default Bill;
