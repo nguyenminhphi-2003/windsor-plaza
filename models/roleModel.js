@@ -16,7 +16,7 @@ const roleSchema = new Schema(
     // permission: {
     //   type: Schema.ObjectId,
     //   ref: 'Permission',
-    //   required: [true, 'A role must have a permission']
+    //   required: [true, 'A role must have some permissions']
     // },
   },
   {
