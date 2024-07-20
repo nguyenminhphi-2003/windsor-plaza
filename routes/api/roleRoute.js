@@ -1,7 +1,10 @@
 import { Router } from 'express';
 import roleController from '../../controllers/roleController.js';
+import authController from '../../controllers/authController.js';
 
 const router = new Router();
+
+router.use(authController.protect);
 
 router
   .route('/')
