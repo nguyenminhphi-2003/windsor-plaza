@@ -13,11 +13,10 @@ const roleSchema = new Schema(
       required: [true, 'A role must have a description'],
       trim: true,
     },
-    // permission: {
-    //   type: Schema.ObjectId,
-    //   ref: 'Permission',
-    //   required: [true, 'A role must have some permissions']
-    // },
+    permission: {
+      type: Schema.ObjectId,
+      ref: 'Permission',
+    },
   },
   {
     toJSON: { virtuals: true },
