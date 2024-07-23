@@ -33,6 +33,11 @@ const userSchema = new Schema(
       default: true,
       select: false,
     },
+    role: {
+      type: Schema.ObjectId,
+      ref: 'Role',
+      default: '669f67124c3fe16d2e2dba72',
+    }
   },
   {
     toJSON: { virtuals: true },
