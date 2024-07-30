@@ -80,6 +80,24 @@ const authController = {
     res.locals.user = user;
     next();
   }),
+
+  checkPermit: (permission) => (req, res, next) => {
+    const permissions = req.user.role.permissions;
+    const hasPermission = permissions.some((perm) => perm.name === permission);
+
+    // Check if user is admin
+    if(req.user.role.name === 'admin') return next();
+
+
+    // Check if user has permission
+    if (!hasPermission) {
+      return next(
+        new MyError('You do not have permission to perform this action.', 403),
+      );
+    }
+
+    return next();
+  },
 };
 
 export default authController;

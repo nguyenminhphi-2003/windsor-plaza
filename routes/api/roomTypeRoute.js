@@ -6,13 +6,28 @@ const router = Router();
 
 router
   .route('/')
-  .get(roomTypeController.getAllRoomTypes)
-  .post(authController.protect, roomTypeController.createRoomType);
+  .get(
+    authController.checkPermit('readRoomType'),
+    roomTypeController.getAllRoomTypes,
+  )
+  .post(
+    authController.checkPermit('createRoomType'),
+    roomTypeController.createRoomType,
+  );
 
 router
   .route('/:id')
-  .get(roomTypeController.getRoomTypeById)
-  .patch(authController.protect, roomTypeController.updateRoomType)
-  .delete(authController.protect, roomTypeController.deleteRoomType);
+  .get(
+    authController.checkPermit('readRoomType'),
+    roomTypeController.getRoomTypeById,
+  )
+  .patch(
+    authController.checkPermit('updateRoomType'),
+    roomTypeController.updateRoomType,
+  )
+  .delete(
+    authController.checkPermit('deleteRoomType'),
+    roomTypeController.deleteRoomType,
+  );
 
 export default router;

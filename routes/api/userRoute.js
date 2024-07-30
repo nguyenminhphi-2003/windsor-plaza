@@ -16,12 +16,12 @@ router.delete('/deleteMe', userController.deleteMe);
 
 router
   .route('/')
-  .get(userController.getAllUsers);
+  .get(authController.checkPermit('readUser'), userController.getAllUsers);
 
 router
   .route('/:id')
-  .get(userController.getUserById)
-  .patch(userController.updateUser)
-  .delete(userController.deleteUser);
+  .get(authController.checkPermit('readUser'), userController.getUserById)
+  .patch(authController.checkPermit('updateUser'), userController.updateUser)
+  .delete(authController.checkPermit('deleteUser'), userController.deleteUser);
 
 export default router;

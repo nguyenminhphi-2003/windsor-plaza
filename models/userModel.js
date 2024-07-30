@@ -47,6 +47,11 @@ const userSchema = new Schema(
 
 userSchema.pre(/^find/, function (next) {
   this.find({ active: { $ne: false } });
+
+  this.populate({
+    path: 'role',
+    select: 'name',
+  })
   next();
 });
 

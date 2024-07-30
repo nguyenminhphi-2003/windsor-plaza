@@ -4,17 +4,30 @@ import authController from '../../controllers/authController.js';
 
 const router = Router();
 
-router.use(authController.protect);
-
 router
   .route('/')
-  .get(bookingController.getAllBookings)
-  .post(bookingController.createBooking);
+  .get(
+    authController.checkPermit('readBooking'),
+    bookingController.getAllBookings,
+  )
+  .post(
+    authController.checkPermit('createBooking'),
+    bookingController.createBooking,
+  );
 
 router
   .route('/:id')
-  .get(bookingController.getBookingById)
-  .patch(bookingController.updateBooking)
-  .delete(bookingController.deleteBooking);
+  .get(
+    authController.checkPermit('readBooking'),
+    bookingController.getBookingById,
+  )
+  .patch(
+    authController.checkPermit('updateBooking'),
+    bookingController.updateBooking,
+  )
+  .delete(
+    authController.checkPermit('deleteBooking'),
+    bookingController.deleteBooking,
+  );
 
 export default router;

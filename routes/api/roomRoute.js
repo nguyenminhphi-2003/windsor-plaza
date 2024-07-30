@@ -8,14 +8,13 @@ router.use(authController.protect);
 
 router
   .route('/')
-  .get(roomController.getAllRooms)
-  .post(roomController.createRoom);
+  .get(authController.checkPermit('readRoom'), roomController.getAllRooms)
+  .post(authController.checkPermit('createRoom'), roomController.createRoom);
 
-  
 router
   .route('/:id')
-  .get(roomController.getRoomById)
-  .patch(roomController.updateRoom)
-  .delete(roomController.deleteRoom);
+  .get(authController.checkPermit('readRoom'), roomController.getRoomById)
+  .patch(authController.checkPermit('updateRoom'), roomController.updateRoom)
+  .delete(authController.checkPermit('deleteRoom'), roomController.deleteRoom);
 
 export default router;

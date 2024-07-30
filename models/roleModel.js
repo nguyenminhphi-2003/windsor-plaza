@@ -13,16 +13,26 @@ const roleSchema = new Schema(
       required: [true, 'A role must have a description'],
       trim: true,
     },
-    permission: {
-      type: Schema.ObjectId,
-      ref: 'Permission',
-    },
+    permissions: [
+      {
+        type: Schema.ObjectId,
+        ref: 'Permission',
+      },
+    ],
   },
   {
     toJSON: { virtuals: true },
     toObject: { virtuals: true },
   },
 );
+
+roleSchema.pre(/^find/, function (next) {
+  this.populate({
+    path: 'permissions',
+    select: 'name',
+  });
+  next();
+});
 
 const Role = model('Role', roleSchema);
 export default Role;
