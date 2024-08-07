@@ -1,4 +1,5 @@
 import { Schema, model } from 'mongoose';
+import { MyError } from '../utils/MyError.js';
 import Room from './roomModel.js';
 
 const billSchema = new Schema(
@@ -53,10 +54,25 @@ billSchema.pre('findOneAndUpdate', async function (next) {
   next();
 });
 
+billSchema.pre('save', async function (next) {
+  if (this.isModified('total')) return next();
+
+  const room = await Room.findById(this.room);
+
+  if (room.status === 'available') {
+    return next(new MyError('Room must be in use to check out', 400));
+  } else {
+    room.status = 'available';
+    await room.save();
+  }
+  next();
+});
+
 billSchema.post('save', async function () {
   const room = await Room.findById(this.room);
-  this.total = room.type.price;
-  this.save();
+  if (room) {
+    await this.updateOne({ total: room.type.price });
+  }
 });
 
 const Bill = model('Bill', billSchema);
