@@ -36,7 +36,7 @@ billSchema.pre(/^find/, function (next) {
     select: 'name',
   }).populate({
     path: 'user',
-    select: 'name phoneNumber',
+    select: 'name phone',
   });
   next();
 });

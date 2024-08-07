@@ -24,7 +24,7 @@ const userSchema = new Schema(
     // passwordChangedAt: Date,
     // passwordResetToken: String,
     // passwordResetExpires: Date,
-    phoneNumber: {
+    phone: {
       type: String,
       required: [true, 'A user must have a phone number'],
     },
