@@ -31,7 +31,8 @@ const roomSchema = new Schema(
 roomSchema.pre(/^find/, function (next) {
   this.populate({
     path: 'type',
-    select: 'name price imageCover images capacity',
+    // select: 'name price imageCover images capacity',
+    select: 'name price capacity',
   });
 
   next();
