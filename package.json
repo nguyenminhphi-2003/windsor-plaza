@@ -17,7 +17,8 @@
     "mongoose": "^8.4.3",
     "prettier": "^3.3.2",
     "pug": "^3.0.3",
-    "validator": "^13.12.0"
+    "validator": "^13.12.0",
+    "windsor-plaza": "file:"
   },
   "devDependencies": {
     "morgan": "^1.10.0"
