@@ -82,14 +82,12 @@ const authController = {
   }),
 
   checkPermit: (permission) => (req, res, next) => {
+    if (req.user.role.name === 'admin') return next();
+
+    // Check if user has permission
     const permissions = req.user.role.permissions;
     const hasPermission = permissions.some((perm) => perm.name === permission);
 
-    // Check if user is admin
-    if(req.user.role.name === 'admin') return next();
-
-
-    // Check if user has permission
     if (!hasPermission) {
       return next(
         new MyError('You do not have permission to perform this action.', 403),
