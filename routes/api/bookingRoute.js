@@ -4,6 +4,8 @@ import authController from '../../controllers/authController.js';
 
 const router = Router();
 
+router.use(authController.protect);
+
 router
   .route('/')
   .get(
