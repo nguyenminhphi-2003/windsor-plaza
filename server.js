@@ -1,6 +1,6 @@
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
-import app from './app.js'; // Ensure the app module is exported as ESM
+import app from './app.js';
 
 dotenv.config({ path: './config.env' });
 // CONNECT TO DATABASE
