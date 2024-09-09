@@ -1,2 +1,2 @@
 # windsor-plaza
-A project cloning the Windsor Plaza Hotel website using Express library.
+A fullstack project cloning the Windsor Plaza Hotel.
