@@ -9,5 +9,9 @@
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
-  font-size: 16px;
+  font-size: 18px;
+}
+
+.avoid-user-header {
+  padding-top: 7rem;
 }

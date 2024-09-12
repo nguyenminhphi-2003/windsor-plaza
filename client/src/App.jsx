@@ -1,8 +1,13 @@
+import Header from './user/components/Header';
+
 function App() {
   return (
-    <h1 className="text-3xl font-bold underline">
-      Hello world!
-    </h1>
+    <>
+      <Header />
+      <h1 className="avoid-user-header text-3xl font-bold underline">
+        Hello world!
+      </h1>
+    </>
   )
 }
 
