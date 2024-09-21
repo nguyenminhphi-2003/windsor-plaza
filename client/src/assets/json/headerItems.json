@@ -1,0 +1,60 @@
+[
+  {
+    "name": "Accommodation",
+    "path": "/accommodation",
+    "subitem": [
+      {
+        "name": "Rooms",
+        "path": "/accommodation/rooms"
+      },
+      {
+        "name": "Suites",
+        "path": "/accommodation/suites"
+      }
+    ]
+  },
+  {
+    "name": "Meeting & Events",
+    "path": "/meeting-events",
+    "subitem": [
+      {
+        "name": "Meeting & Conference",
+        "path": "/meeting-events/meeting-conference"
+      },
+      {
+        "name": "Jade Ballroom",
+        "path": "/meeting-events/jade-ballroom"
+      },
+      {
+        "name": "Ngan Dinh Club",
+        "path": "/meeting-events/ngan-dinh-club"
+      },
+      {
+        "name": "Oktoberfest",
+        "path": "/meeting-events/oktoberfest"
+      }
+    ]
+  },
+  {
+    "name": "Explore",
+    "path": "/explore",
+    "subitem": [
+      {
+        "name": "Local Experiences",
+        "path": "/explore/local-experiences"
+      },
+      {
+        "name": "Landmarks",
+        "path": "/explore/landmarks"
+      },
+      {
+        "name": "Tour Desk",
+        "path": "/explore/tour-desk"
+      }
+    ]
+  },
+  {
+    "name": "Book Now",
+    "path": "/login"
+  }
+]
