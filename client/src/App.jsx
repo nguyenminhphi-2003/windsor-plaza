@@ -1,4 +1,5 @@
 import Header from './user/components/Header';
+import Footer from './user/components/Footer';
 
 function App() {
   return (
@@ -7,8 +8,9 @@ function App() {
       <h1 className="avoid-user-header text-3xl font-bold underline">
         Hello world!
       </h1>
+      <Footer />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
