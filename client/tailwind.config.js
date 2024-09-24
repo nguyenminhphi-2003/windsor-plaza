@@ -7,7 +7,7 @@ export default {
   theme: {
     extend: {
       colors: {
-        'header-red': '#6e0a0b',
+        'primary-red': '#6e0a0b',
         'primary-gold': '#fcd98d',
       }
     },
