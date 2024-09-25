@@ -19,7 +19,7 @@ export default function Footer() {
 
 function About() {
   return (
-    <div className="footer-about flex bg-primary-red border-b border-primary-gold">
+    <div className="footer-about flex bg-primary-red border-b border-primary-gold pb-9">
       <div className="about-logo inline-block w-24 h-24 shrink-0 mr-5">
         <img
           className="w-full h-full ml-2.5 mr-2.5 mb-2.5"
@@ -50,7 +50,7 @@ function About() {
           MẠI AN ĐÔNG
         </h2>
 
-        <p className='text-lg'>
+        <p className='text-base'>
           Giấy CNĐKDN: 0304938912-001 – Ngày cấp: 30/06/2008 (Sửa đổi lần thứ 4,
           ngày 05/10/2017) Cơ quan cấp: Phòng Đăng ký kinh doanh – Sở kế hoạch
           và Đầu tư TP.HCM Địa chỉ đăng ký kinh doanh: 18 An Dương Vương, Phường
@@ -63,31 +63,31 @@ function About() {
 
 function Contact() {
   return (
-    <div className="footer-contact flex">
-      <div className="contact-reservation">
-        <h2>For Reservations</h2>
+    <div className="footer-contact grid grid-cols-3 gap-4 bg-primary-red border-b border-primary-gold py-5">
+      <div className="contact-reservation flex flex-col items-center">
+        <div className='text-xl font-bold text-primary-gold mb-3'>For Reservations</div>
         <ul>
-          <li>Book Your Stay</li>
-          <li>Check Your Reservations</li>
-          <li>Call Us!</li>
-          <li>reservations@windsorplazahotel.com</li>
+          <li className='text-xl text-white'>Book Your Stay</li>
+          <li className='text-xl text-white'>Check Your Reservations</li>
+          <li className='text-xl text-white'>Call Us!</li>
+          <li className='text-xl text-white'>reservations@windsorplazahotel.com</li>
         </ul>
       </div>
 
-      <div className="contact-support">
-        <h2>Support</h2>
+      <div className="contact-support flex flex-col items-center">
+        <div className='text-xl font-bold text-primary-gold mb-3'>Support</div>
         <ul>
-          <li>Contact Us</li>
-          <li>Careers</li>
-          <li>Windsor Club</li>
+          <li className='text-xl text-white'>Contact Us</li>
+          <li className='text-xl text-white'>Careers</li>
+          <li className='text-xl text-white'>Windsor Club</li>
         </ul>
       </div>
 
-      <div className="contact-connect">
-        <h2>Connect</h2>
+      <div className="contact-connect flex flex-col items-center">
+        <div className='text-xl font-bold text-primary-gold mb-3'>Connect</div>
         <ul>
-          <li>Facebook</li>
-          <li>Instagram</li>
+          <li className='text-xl text-white'>Facebook</li>
+          <li className='text-xl text-white'>Instagram</li>
         </ul>
       </div>
     </div>
@@ -96,9 +96,9 @@ function Contact() {
 
 function Policy() {
   return (
-    <div className="footer-policy flex">
-      <p>Terms & Conditions</p>
-      <p>Privacy</p>
+    <div className="footer-policy flex py-10 items-center justify-center bg-primary-red border-b text-primary-gold">
+      <p className='text-xl mx-5'>Terms & Conditions</p>
+      <p className='text-xl mx-5'>Privacy</p>
     </div>
   );
 }
