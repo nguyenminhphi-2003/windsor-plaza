@@ -1,9 +1,32 @@
+import { useEffect } from 'react';
 import appLogo from '../../assets/images/Windsor-Logo-Gold.svg';
 import headerItems from '../../assets/json/headerItems.json';
+import $ from 'jquery';
 
 export default function Header() {
+  const listenScrollEvent = (event) => {
+    $(window).on("scroll", function() {
+      if($(window).scrollTop() > 50) {
+        $(".header").addClass("bg-primary-red");
+        $(".header").addClass("shadow-lg");
+        $(".header").removeClass("bg-transparent");
+      } else {
+        $(".header").addClass("bg-transparent"); 
+        $(".header").removeClass("bg-primary-red"); 
+        $(".header").removeClass("shadow-lg"); 
+      }
+    });
+  }
+
+  useEffect(() => {
+    window.addEventListener('scroll', listenScrollEvent);
+  
+    return () =>
+      window.removeEventListener('scroll', listenScrollEvent);
+  }, []);
+
   return (
-    <header className="bg-primary-red fixed inline-block w-full z-10 shadow-lg">
+    <header className="header bg-transparent fixed inline-block w-full z-10 transition-colors duration-500">
       <a className="header-logo inline-block w-24 h-24" href="/">
         <img
           className="w-full h-full ml-2.5 mr-2.5 mb-2.5 "
