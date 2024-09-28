@@ -9,7 +9,7 @@ import {
 
 export default function Footer() {
   return (
-    <footer className="absolute bottom-0">
+    <footer className="bottom-0">
       <About />
       <Contact />
       <Policy />
