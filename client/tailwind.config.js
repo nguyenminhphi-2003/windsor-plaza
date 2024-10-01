@@ -7,6 +7,9 @@ export default {
         'primary-red': '#6e0a0b',
         'primary-gold': '#fcd98d',
       },
+      height: {
+        '180': '45rem',
+      }
     },
   },
   plugins: [],
