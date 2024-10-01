@@ -1,13 +1,14 @@
 import Header from './user/components/Header';
 import Footer from './user/components/Footer';
+import HomePage from './user/pages/HomePage';
 
 function App() {
   return (
     <>
       <Header />
-      <h1 className="avoid-user-header text-3xl font-bold underline">
-        Hello world!
-      </h1>
+      <div className='content'>
+        <HomePage/>
+      </div>
       <Footer />
     </>
   );
