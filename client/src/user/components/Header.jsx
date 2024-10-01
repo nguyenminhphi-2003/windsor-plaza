@@ -28,7 +28,7 @@ export default function Header() {
   }, []);
 
   return (
-    <header className="header bg-transparent fixed inline-block w-full z-10 transition-colors duration-500">
+    <header className="header bg-transparent fixed inline-block w-full z-20 transition-colors duration-500">
       <a className="header-logo inline-block w-24 h-24" href="/">
         <img
           className="w-full h-full ml-2.5 mr-2.5 mb-2.5 "
