@@ -1,10 +1,12 @@
 import { useEffect } from 'react';
-import appLogo from '../../assets/images/Windsor-Logo-Gold.svg';
-import headerItems from '../../assets/json/headerItems.json';
 import $ from 'jquery';
 
+import appLogo from '../../assets/images/Windsor-Logo-Gold.svg';
+import headerItems from '../../assets/json/headerItems.json';
+
 export default function Header() {
-  const listenScrollEvent = (event) => {
+  // Transition color of header when scrolling
+  const listenScrollEvent = () => {
     $(window).on("scroll", function() {
       if($(window).scrollTop() > 50) {
         $(".header").addClass("bg-primary-red");
