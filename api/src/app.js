@@ -9,7 +9,7 @@ import apiRoutes from './routes/index.js';
 
 const __dirname = path.resolve();
 
-dotenv.config({ path: '../config.env' });
+dotenv.config({ path: '../../config.env' });
 const app = express();
 
 //Development logging
