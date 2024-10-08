@@ -1,9 +1,10 @@
+import 'react-slideshow-image/dist/styles.css';
 import { Slide } from 'react-slideshow-image';
-import 'react-slideshow-image/dist/styles.css'
 
 // Images
 import MainLobby from '../../assets/images/homepage/MainLobby.webp';
 import MainEntrance from '../../assets/images/homepage/MainEntrance.webp';
+import Banner from '../../assets/images/homepage/Banner.webp';
 import DeluxeTwin from '../../assets/images/accommodation/Deluxe-Twin.webp';
 import JuniorSuite from '../../assets/images/accommodation/Junior-Suite.webp';
 import PlazaKing from '../../assets/images/accommodation/Plaza-King.webp';
@@ -17,11 +18,13 @@ export default function HomePage() {
       <VideoContainer />
       <Introduction />
       <Accommodation />
-      {/*
-      Dining
-      Experiences
-      Location
-       */}
+
+      <div className="home-page-banner relative text-center mb-9">
+        <img src={Banner} alt="Banner" />
+        <div className="absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] text-5xl text-white italic">
+          Old World Charm in Saigon
+        </div>
+      </div>
     </div>
   )
 }
@@ -81,15 +84,15 @@ function Accommodation() {
       </p>
 
       {/* Room slider */}
-      <div className="slider w-1/2 my-10">
+      <div className="slider w-[65%] my-10">
         <Slide>
           <div
             style={{
               backgroundImage: `url(${DeluxeTwin})`,
               backgroundSize: 'cover',
               backgroundPosition: 'center',
-              width: '100vh',
-              height: '50vh',
+              width: '100%',
+              height: '60vh',
             }}
           >
           </div>
@@ -98,8 +101,8 @@ function Accommodation() {
               backgroundImage: `url('${JuniorSuite}')`,
               backgroundSize: 'cover',
               backgroundPosition: 'center',
-              width: '100vh',
-              height: '50vh',
+              width: '100%',
+              height: '60vh',
             }}
           >
           </div>
@@ -108,13 +111,18 @@ function Accommodation() {
               backgroundImage: `url('${PlazaKing}')`,
               backgroundSize: 'cover',
               backgroundPosition: 'center',
-              width: '100vh',
-              height: '50vh',
+              width: '100%',
+              height: '60vh',
             }}
           >
           </div>
         </Slide>
       </div>
+
+      <button 
+        className='uppercase text-lg font-medium text-primary-red border border-primary-red px-6 py-2 hover:bg-primary-red hover:text-white transition duration-200'>
+          Explore now
+          </button>
     </div>
   )
 }
